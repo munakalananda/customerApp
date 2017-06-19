@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC 
+"-//Apache Software Foundation//DTD Struts Configuration 1.3//EN" 
+"http://jakarta.apache.org/struts/dtds/struts-config_1_3.dtd">
+
+<struts-config>
+
+	<form-beans>
+		<form-bean name="CustomerForm" type="com.cts.sample.form.CustomerForm"/>
+	</form-beans>
+	
+
+	<action-mappings>
+		
+		
+<action path="/customer"
+			type="com.cts.sample.action.CustomerAction" name="CustomerForm">
+			<forward name="success" path="/customer.jsp"/>
+			
+		</action>
+		
+	</action-mappings>
+
+</struts-config>

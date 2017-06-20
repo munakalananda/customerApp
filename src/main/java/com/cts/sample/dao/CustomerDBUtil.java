@@ -90,7 +90,7 @@ public class CustomerDBUtil {
 	public static Connection getConnection(){
 		try{  
 			Class.forName("com.mysql.jdbc.Driver");  
-			con=DriverManager.getConnection("jdbc:mysql://172.17.0.5:3306/test","root","mypassword"); 
+			con=DriverManager.getConnection("jdbc:mysql://54.234.207.200:3306/test","root","mypassword"); 
 		}catch(SQLException e){
 			System.out.println(e);
 		} catch (ClassNotFoundException e) {

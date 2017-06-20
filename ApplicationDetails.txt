@@ -1,35 +1,16 @@
-Tomcat : 7.0.78
-MYSQL Server: 5.5
-
-Step1: Instsll Mysql Server   
-[password : Passw0rd]
-[User : root]  default
-[Port : 3306]  default
-
-
-Step3 : login through MySQL client (CMD)
-
-password : Passw0rd
-mysql> use test   [ using test database]
+Step 1 : Spin docker instancedocker run --detach -p 3306:3306 --name=customerApp-mysql --env="MYSQL_ROOT_PASSWORD=mypassword" mysql  
+Step 2:connect to docker cotainerdocker exec -it <docker container id > bash
+Step 3
+ Connect to mysql and create test database mysql -uroot -pmypassword;
+mysql> show databases;+--------------------+| Database           |+--------------------+| information_schema || mysql              || performance_schema || sys                || test               |+--------------------+
+mysql> create database test;
 
 
-  
-Step 4: Inserting sample data 
-
-
+  Step 4: Inserting sample data 
 
 mysql>CREATE TABLE CUSTOMER (C_NAME VARCHAR(20) ,C_ID VARCHAR(8),C_ADDRESS VARCHAR(30) );
-
-mysql>INSERT INTO CUSTOMER(C_NAME,C_ID,C_ADDRESS) VALUES('Nanda Kishore','06541I','Vizag');
-mysql>INSERT INTO CUSTOMER(C_NAME,C_ID,C_ADDRESS) VALUES('Vinod','06531I','Vizag');
-mysql>INSERT INTO CUSTOMER(C_NAME,C_ID,C_ADDRESS) VALUES('Babul','06561I','Vizag');
-mysql>INSERT INTO CUSTOMER(C_NAME,C_ID,C_ADDRESS) VALUES('Krishna','0003433','TDP');
-
-
-
+mysql>INSERT INTO CUSTOMER(C_NAME,C_ID,C_ADDRESS) VALUES('Krishna Chaitanya','202890','Hyderabad');mysql>INSERT INTO CUSTOMER(C_NAME,C_ID,C_ADDRESS) VALUES('Rajesh ','623692','Hyderabad');
+Step 4a:if you want to delete data To delete : DELETE  from CUSTOMER 
 Step5: Build Java App through Maven Build 
-
 Step 6: Deploye *.war(customerApp) in Tomcat webApp
-
-Step 7 : Hit below Url in browser  
-         http://localhost:9080/customerApp/
+Step 7 : Hit below Url in browser           http://localhost:9080/customerApp/

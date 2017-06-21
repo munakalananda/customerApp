@@ -11,6 +11,7 @@ mysql> create database test;
 mysql>CREATE TABLE CUSTOMER (C_NAME VARCHAR(20) ,C_ID VARCHAR(8),C_ADDRESS VARCHAR(30) );
 mysql>INSERT INTO CUSTOMER(C_NAME,C_ID,C_ADDRESS) VALUES('Krishna Chaitanya','202890','Hyderabad');mysql>INSERT INTO CUSTOMER(C_NAME,C_ID,C_ADDRESS) VALUES('Rajesh ','623692','Hyderabad');
 Step 4a:if you want to delete data To delete : DELETE  from CUSTOMER 
-Step5: Build Java App through Maven Build 
+Step5: Build Java App gradle build ./gradlew clean build 
+
 Step 6: Deploye *.war(customerApp) in Tomcat webApp
-Step 7 : Hit below Url in browser           http://localhost:9080/customerApp/
+Step 7 : Hit below Url in browser          http://54.165.162.129:49003/customerApp/

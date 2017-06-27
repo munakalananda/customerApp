@@ -4,6 +4,16 @@
 
 <web-app> 
 <display-name>CUSTOMER-DETAILS</display-name>
+<filter>
+	<filter-name>MyFilter</filter-name>
+	<display-name>MyFilter</display-name>
+	<description></description>
+	<filter-class>com.cts.sample.filters.MyFilter</filter-class>
+</filter>
+<filter-mapping>
+	<filter-name>MyFilter</filter-name>
+	<url-pattern>/MyFilter</url-pattern>
+</filter-mapping>
 
   <servlet>
     <servlet-name>action</servlet-name>

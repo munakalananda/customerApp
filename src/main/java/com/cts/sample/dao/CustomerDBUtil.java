@@ -8,6 +8,12 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
+
+import com.cts.sample.utility.CustomProperty;
+
+
+
 
 public class CustomerDBUtil {
 
@@ -15,13 +21,16 @@ public class CustomerDBUtil {
 	public static Statement stmt=null;
 	public static void main(String[] args) {
 		
-		  InsertCustomer(new Customer("vijay","063333","Vizag"));
+		 InsertCustomer(new Customer("Krishna Chaitanya", "202890", "Hyderabad")); 
 		 System.out.println(getCustomerDetails("06541I"));
 	     System.out.println(getCustomerList());
 	   
 		 
 			}  
 
+
+	public static Properties prop= CustomProperty.loadProperty();
+	
 	public static Customer getCustomerDetails(String customerId){
 		Customer customer = new Customer();
 		PreparedStatement pstmt=null;
@@ -89,8 +98,14 @@ public class CustomerDBUtil {
 	
 	public static Connection getConnection(){
 		try{  
-			Class.forName("com.mysql.jdbc.Driver");  
-			con=DriverManager.getConnection("jdbc:mysql://54.234.207.200:3306/test","root","mypassword"); 
+			Class.forName(prop.getProperty("DRIVER"));  
+			con=DriverManager.getConnection(prop.getProperty("URL")+":"
+			+prop.getProperty("PORT")+"/"
+			+prop.getProperty("DATABASE"),
+			prop.getProperty("USER"),
+			prop.getProperty("PASSWORD")); 
+			
+			
 		}catch(SQLException e){
 			System.out.println(e);
 		} catch (ClassNotFoundException e) {
@@ -140,7 +155,38 @@ public class CustomerDBUtil {
 	}
 	
 	
+	public static void InsertCustomer(String name,String Id,String address,Connection con){
+		PreparedStatement pstmt=null;
 	
+		try {
+			pstmt=con.prepareStatement("INSERT INTO CUSTOMER(C_NAME,C_ID,C_ADDRESS) VALUES(?,?,?)");
+			pstmt.setString(1,name);
+			pstmt.setString(2,Id);
+			pstmt.setString(3,address);
+			pstmt.execute();
+			} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			if(pstmt!=null){
+				try {
+					pstmt.close();
+					
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		
+	}
+	
+	
+	
+	
+	public static String getHelloWorld() {
+
+		return "Hello World";
+
+	}
 	
 	
 }
